@@ -20,7 +20,6 @@
                     url: "/search/wine/",
                     cache: false,
                     data: formData,
-                    
                     success: onSuccess,
                     error: onError
                 });

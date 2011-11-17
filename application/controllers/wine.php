@@ -25,8 +25,9 @@ class Wine extends CI_Controller {
 		{
 			//http://api.snooth.com/wine/?id=kramer-vineyards-pinot-noir-estate&akey=rrwb6nqmqmiyhshx0rickn01sn3aoi89f78ym08rhuhbbsz7
 			$data = array('data' => $this->snooth->wineDetails($id), 'id' => $id);
+			
 			//$data['data']['wineId'] = $id;
-			$this->load->view('wine_details_view', $data);
+			$this->load->view('checkin', $data);
 		}
 		
 	/**

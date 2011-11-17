@@ -23,6 +23,7 @@
 			
 			$this->session = new vinozoSession();
 			$this->connection = new vinozoConnection();
+			
 		}
 		
 		public function theurl(){
@@ -33,6 +34,25 @@
 		{
 			return $this->session->logged_in();
 		}
+		
+		public function isJson($postData = NULL)
+		{
+			if ($this->isJsonString($postData)) {            
+	        	echo "Its Json";    
+	        } else{
+	        	echo "It isn't Json";    
+	        }
+		}
+		
+		/*public function isJson($str = NULL){
+		    try{
+		        $jObject = json_decode($str);
+		    } catch(Exception $e){
+		        return false;
+		    }
+		    	return (is_object($jObject)) ? true : false;
+		}*/
+		
 		
 		public function userFB($postData = NULL)
 		{
@@ -358,6 +378,7 @@
 		public function __toString() {
 			return "exception '".__CLASS__ ."' with message '".$this->getMessage()."' in ".$this->getFile().":".$this->getLine()."\nStack trace:\n".$this->getTraceAsString();
 		}
+		
 	}
 	
 	class vinozoSession {
