@@ -11,12 +11,11 @@
 		<div>
 		  <h1>Vinozo - Login</h1>
 		  
-		  <form>
-		  	email:<input type="text" /><br />
-		  	password: <input type="password" />
-		  	<input type="submit" />
+		  <form action="/user/login"  data-ajax="false" method="get" id="loginform">
+		  	email:<input type="text" name="email"/><br />
+		  	password: <input type="password" name="password"/>
+		  	<input type="submit" value="login" data-role="button"/>
 		  </form>
-		  <p><a href="#searchview" data-role="button">Bypass Login and go to Search</a></p>
 		  <fb:login-button autologoutlink='true'></fb:login-button>
 		</div>
 	</div> 
@@ -33,61 +32,13 @@
 	<div data-role="content" > 
 		<form action="#"  method="post" id="searchform">
 			<input type="text" name="terms" id="searchterms">
-			<input type="button" name="go" value="go" id="search"/>
+			<input type="submit" name="go" value="go" id="search"/>
 		</form>
 		<div id="wineresults">
 			
 		</div>
+		<p><a href="/user/logout" rel="external">logout</a></p>
 	</div>
 <!-- /search page -->
-
-<!-- details page -->
-<div data-role="page" id="details"> 
- 
-	<div data-role="header"> 
-		<h1>VINOZO: Wine Detail</h1>
-	</div><!-- /header --> 
-	<div data-role="content" > 
-	<h1></h1>
-		
-		<?php 
-		// fix the return string which is incomplete
-		//$winedata = ltrim($data, 's');
-		//$winedata = "{".$winedata;
-		// Show results data if exists
-		
-		$wine = json_decode($data);
-		
-		if(!$wine){
-			echo "Sorry, no wines match.";
-			} elseif (array_key_exists('error', $wine)){
-				echo $wine['error'];
-			} elseif ($wine->meta->results == 'int(0)'){
-				echo "Sorry, no wines match. Add to Vinozo links goes here";
-			} else {
-	
-			echo "<img class=\"largewinepic\" src=\"".$wine->wines[0]->image."\" border=\"0\" />";
-			echo "<h2>".$wine->wines[0]->name."</h2>";
-			echo "<i>".$wine->wines[0]->winery."</i><br />";
-			echo "<i>".$wine->wines[0]->region."</i><br />";
-			echo "<b>".$wine->wines[0]->vintage."</b><br />";
-			echo "<i>".$wine->wines[0]->varietal."</i><br />";
-			echo "<i>".$wine->wines[0]->type."</i><br />";
-			
-			echo "<p>".$wine->wines[0]->wm_notes."</p>";
-			echo "<a href='/wine/checkin/$id'>Check In</a>";		
-				
-		}	
-	?>
-	
-
-	<div id="body">
-		<img src="<?php //echo $data['wines'][0]['image'] ?>"/>
-		
-	</div>
-		
-	</div>
-</div>
-<!-- /details page -->
 
 <?php  $this->load->view('templates/footer'); ?>  

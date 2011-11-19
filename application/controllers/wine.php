@@ -9,6 +9,7 @@ class Wine extends CI_Controller {
 			parent::__construct();
 			
 			$this->load->library('snooth');
+			$this->load->library('session');
 			$this->load->library('vinozo');
 			//$this->search->enable_debug(TRUE);
 		}
@@ -35,13 +36,14 @@ class Wine extends CI_Controller {
 	 */
 	public function checkin($id)
 		{
+			var_dump($this->vinozo);
 			$postData = json_encode(array(
-				'user_id'=>'5521459', // Will come from session
+				'user_id'=>'100', // Will come from session
 				'wineId'=>$id, // Try 'wine'
 				'favorite'=>0 // From session?
 			));	
 			$data = array('data' => $this->vinozo->createCheckin($postData));
-			$this->load->view('wine_checkin_view', $data);
+			$this->load->view('checkin', $data);
 		}
 	
 	

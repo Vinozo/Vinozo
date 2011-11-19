@@ -15,20 +15,8 @@ class Home extends CI_Controller {
 		
 	public function index()
 		{
-			// If logged in, go right to search
-			if ($this->vinozo->logged_in())
-			{
-				redirect('/search/', 'refresh');
-			} else {
-				// Not logged in to Vinozo, so display login page on main jqm view
-				$this->load->view('main');
-			}
-			
-			
-			// Logging in through FB, so get FB login info and pipe it to Vinozo
+			$this->load->view('main');
 			
 		}
 }
 
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */

@@ -1,8 +1,9 @@
 <div id="fb-root"></div>
 <script>
+
 		  window.fbAsyncInit = function() {
 		    FB.init({
-		      appId      : '124853680952491', // App ID
+		      appId      : '124853680952491', // App ID - Need to get this from config
 		      channelURL : 'http://alpha.vinozo.com/channel.html', // Channel File
 		      status     : true, // check login status
 		      cookie     : true, // enable cookies to allow the server to access the session
@@ -11,7 +12,7 @@
 		    });
 			
 		    FB.Event.subscribe('auth.login', function(resp) {
-		        window.location = '#search';
+		        window.location = '#searchview';
 		    });
 		  };
 		

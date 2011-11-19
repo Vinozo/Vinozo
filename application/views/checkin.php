@@ -2,7 +2,7 @@
 
 <!-- login page -->
 <div data-role="page" id="details"> 
- 
+<?php  $this->load->view('utility/checkin_ajax'); ?> 
 	<div data-role="header"> 
 		<h1>Wine Detail</h1>
 		
@@ -45,8 +45,7 @@
 <!-- /login page -->
 
 <!-- checkin page -->
-<div data-role="page" id="searchview"> 
-<?php  $this->load->view('utility/search_ajax'); ?>
+<div data-role="page" id="checkin"> 
 	<div data-role="header"> 
 		<h1>VINOZO: Search</h1>
 	</div><!-- /header --> 

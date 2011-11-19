@@ -1,22 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>Wine Details</title>
-
+<?php  $this->load->view('templates/header'); ?>
+<!-- checkin page -->
+<div data-role="page" id="checkin"> 
+<?php  $this->load->view('utility/search_ajax'); ?>
+	<div data-role="header"> 
+		<h1>VINOZO: Checkin</h1>
+	</div><!-- /header --> 
 	
-</head>
-<body>
-
-<div id="container">
-	<h1>Wine Checkin</h1>
-
-	<div id="body">
+	<div data-role="content" > 
 		<?php var_dump($data); ?>
 	</div>
-		
-	
-</div>
-
-</body>
-</html>
+<!-- /checkin page -->
+<?php  $this->load->view('templates/footer'); ?>  

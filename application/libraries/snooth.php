@@ -54,10 +54,10 @@
 			
 			// set URL and other appropriate options
 			
-			//http://api.snooth.com/wine/?id=bodegas-dios-baco-pedro-ximenez-nv-2&akey=rrwb6nqmqmiyhshx0rickn01sn3aoi89f78ym08rhuhbbsz7
+			//http://api.snooth.com/wine/?id=kramer-vineyards-pinot-noir-estate&akey=rrwb6nqmqmiyhshx0rickn01sn3aoi89f78ym08rhuhbbsz7
 			
 			$url = $url = $this->_api_url.'/wine/?id='.$id.'&akey='.$this->_api_key;
-			//var_dump($url);
+			
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 			curl_setopt($ch, CURLOPT_URL, $url);
 			curl_setopt($ch, CURLOPT_HEADER, 0);

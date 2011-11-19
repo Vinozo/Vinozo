@@ -196,8 +196,8 @@
 			$post = '';
 			
 			if($json){
-				$postData = json_encode(array('user_id'=>'5521459', 'wineId'=>'wine', 'favorite'=>0));
-				
+				// $postData = json_encode(array('user_id'=>'5521459', 'wineId'=>'wine', 'favorite'=>0));
+				$postData = $params;
 				//open connection
 				$ch = curl_init();
 				
@@ -413,13 +413,25 @@
 		
 		public function logged_in()
 		{
-			return ( $this->get() === NULL ) ? FALSE : TRUE;
+			// Simply check for uid session variable
+			//var_dump($this->_obj->session->userdata);
+			if(array_key_exists('uid', $this->_obj->session->userdata)){
+				//echo "found key";
+				return true;
+			} else {
+				//echo "didn't find key";
+				return false;
+			}
+			/**
+			 * Don't need to be this sophisticated yet
+			 * return ( $this->get() === NULL ) ? FALSE : TRUE;
+			 */
 		}
 		
 		public function logout()
 		{
-			$this->_unset('token');
-			$this->_unset('user');
+			$this->_unset('uid');
+			//$this->_unset('user');
 		}
 		
 		public function login_url($scope = NULL)
@@ -446,11 +458,14 @@
 		
 		public function login()
 		{
-			$this->logout(); // You know, just in case
-			return $this->call('post', '/checkin/createcheckin', $postData, TRUE);
+			//$this->logout(); // You know, just in case
+			$this->_obj->session->set_userdata('uid');
+			/**
+			 * return $this->call('post', '/user/login', $postData, TRUE);
+			 */
 			
-			$url = $this->login_url($scope);
-			return redirect($url);
+			// Redirect to home, which will flip to search when it sees the sess var
+			return redirect('/');
 		}
 		
 		public function get()

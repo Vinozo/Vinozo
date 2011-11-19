@@ -7,7 +7,7 @@
 	</div><!-- /header --> 
 	<div data-role="content" > 
 				
-		<form action="/search/wine/"  method="post" id="searchform">
+		<form action="/search/wine/"  method="post">
 			<input type="text" name="terms" id="searchterms">
 			<input type="submit" name="search" value="Search" />
 		</form>
