@@ -36,14 +36,14 @@ class Wine extends CI_Controller {
 	 */
 	public function checkin($id)
 		{
-			var_dump($this->vinozo);
+			//var_dump($this->vinozo);
 			$postData = json_encode(array(
 				'user_id'=>'100', // Will come from session
 				'wineId'=>$id, // Try 'wine'
 				'favorite'=>0 // From session?
 			));	
 			$data = array('data' => $this->vinozo->createCheckin($postData));
-			$this->load->view('checkin', $data);
+			$this->load->view('templates/checkin_details', $data);
 		}
 	
 	

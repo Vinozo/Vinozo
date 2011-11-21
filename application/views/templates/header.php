@@ -24,13 +24,38 @@
 	<script type="text/javascript">	
 		
 			<?php 
+			// Check if logged in and slide over to search view (from loginview) if so
 			if($this->vinozo->logged_in()){ ?>
 			$('#loginview').live( 'pageinit',function(event){
   			$.mobile.changePage('#searchview')
   			});
   			<?php } ?>
-		
-		
+			
+			// Put vars into local storage for ajax shifts
+			$('.wineCheckin').live('click', function() {
+			  var wineId = $(this).jqmData('id');
+			  //alert(wineId)
+			  $('#checkinview').jqmData('wineId', wineId);
+			  
+			  $.mobile.changePage('#checkinview');
+			});
+  			
+			/*$('#checkinview').live('pagebeforeshow',function(event, ui){
+			   $.mobile.pageLoading();    
+			   var dynamicDataResp = $.ajax({
+			    url: "/wine/checkin/"+$(this).jqmData('wineId'),
+			    async: false,
+			    cache: false
+			  });
+			  if(dynamicDataResp.status == 200){
+			    $('#dynamicContentHolder').text(dynamicDataResp.responseText);
+			  }
+			  else{
+			    $.mobile.changePage('#error', 'none', false, false);
+			  }
+			}); */ // 
+	
+
 		// all dialog buttons should close their parent dialog
 		$(".ui-dialog button").live("click", function() {
 		
