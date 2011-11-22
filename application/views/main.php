@@ -17,6 +17,7 @@
 		  	<input type="submit" value="login" data-role="button"/>
 		  </form>
 		  <fb:login-button autologoutlink='true'></fb:login-button>
+		  <?php //var_dump($this); ?>
 		</div>
 	</div> 
 </div> 

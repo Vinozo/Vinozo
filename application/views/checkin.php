@@ -36,7 +36,7 @@
 			echo "<i>".$wine->wines[0]->type."</i><br />";
 			
 			echo "<p>".$wine->wines[0]->wm_notes."</p>";
-			echo "<a data-id='$id' class='wineCheckin' href='#'>Check In</a>";		
+			echo "<a data-id='".$id."' class='wineCheckin' href='#'>Check In</a>";		
 				
 		}	
 	?>

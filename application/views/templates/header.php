@@ -36,7 +36,6 @@
 			  var wineId = $(this).jqmData('id');
 			  //alert(wineId)
 			  $('#checkinview').jqmData('wineId', wineId);
-			  
 			  $.mobile.changePage('#checkinview');
 			});
   			
@@ -58,9 +57,7 @@
 
 		// all dialog buttons should close their parent dialog
 		$(".ui-dialog button").live("click", function() {
-		
 			$("[data-role='dialog']").dialog("close");
-		
 		});
 	
 	</script>

@@ -15,7 +15,7 @@ if(!$results){
 			echo "<li class=\"ui-li-has-thumb ui-btn ui-btn-up-c ui-btn-icon-right ui-li ui-li-has-alt\" data-theme=\"b\">";
 			echo "<img class=\"ui-li-thumb\" src=".$wine['image'].">";
 			echo "<div class='wineinfolist'>";
-			echo "<h3 class=\"ui-li-heading\">".$wine['name']."</h3><p class=\"ui-li-desc\"> winery:".$wine['winery']." <a href=\"/wine/details/".$wine['code']."\">Check In</a></p>";
+			echo "<h3 class=\"ui-li-heading\">".$wine['name']."</h3><p class=\"ui-li-desc\"> winery:".$wine['winery']." <a rel='external' href=\"/wine/details/".$wine['code']."\">Check In</a></p>";
 			echo "</div>";
 			echo "</li>";
 	}
