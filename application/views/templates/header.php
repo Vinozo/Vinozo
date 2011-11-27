@@ -20,6 +20,9 @@
 	<script src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
 	<link rel="stylesheet" href="/_assets/js/theme/vinozo_red.css">
 	<link rel="stylesheet" href="/_assets/css/vinozo.css">
+	
+	<link rel="apple-touch-icon" href="/_assets/images/icon.png"/>
+	<link rel="apple-touch-startup-image" href="/_assets/images/startup.png">
 			
 	<script type="text/javascript">	
 		

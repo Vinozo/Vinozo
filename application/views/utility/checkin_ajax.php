@@ -12,10 +12,10 @@
         }        
  
         $(document).ready(function() {
-            $('#checkinview').live( 'pageinit',function(event){
+            $('#checkinview').live( 'pageinit',function(event, ui){
  				//alert('checkinview loaded')
                 //var formData = $("#searchform").serialize();
- 
+ 				$.mobile.showPageLoadingMsg();
                 $.ajax({
                     type: "POST",
                     url: "/wine/checkin/" + $(this).jqmData('wineId'),
