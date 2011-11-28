@@ -40,6 +40,12 @@
 				
 		}	
 	?>
+	<form action="#"  method="post" id="checkinform">
+			<input type="hidden" name="id" id="id" value="<?php echo $id ?>">
+			rating:<input type="text" name="rating" id="rating">
+			note:<input type="text" name="note" id="note">
+			<input type="submit" name="checkin" value="checkin" id="checkin"/>
+	</form>
 	</div>
 </div>
 <!-- /login page -->

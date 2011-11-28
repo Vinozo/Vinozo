@@ -64,9 +64,10 @@
 			return $this->call('post', '/checkin/createcheckin', $postData, TRUE);
 		}
 		
-		public function login()
+		public function login($postData = array())
 		{
-			return $this->session->login();
+			
+			return $this->session->login($postData);
 		}
 		
 		public function login_url($scope = NULL)
@@ -193,7 +194,7 @@
 		public function post($url, $params = array(), $json = TRUE)
 		{
 			// Todo
-			$post = '';
+			//$post = '';
 			
 			if($json){
 				// $postData = json_encode(array('user_id'=>'5521459', 'wineId'=>'wine', 'favorite'=>0));
@@ -225,7 +226,8 @@
 				$fields_string = "";
 				//url-ify the data for the POST
 				foreach($params as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
-				rtrim($fields_string,'&');
+				$fields_string = rtrim($fields_string,'&');
+				//var_dump($fields_string);
 				
 				//open connection
 				$ch = curl_init();
@@ -456,16 +458,12 @@
 			return $url;
 		}
 		
-		public function login()
+		public function login($postData = NULL)
 		{
 			//$this->logout(); // You know, just in case
-			$this->_obj->session->set_userdata('uid');
-			/**
-			 * return $this->call('post', '/user/login', $postData, TRUE);
-			 */
+			// TODO: Bypassing call and needs error handling
+			return $this->connection->post('http://radiant-dusk-5485.herokuapp.com/user/createuser/', $postData, FALSE);
 			
-			// Redirect to home, which will flip to search when it sees the sess var
-			return redirect('/');
 		}
 		
 		public function get()

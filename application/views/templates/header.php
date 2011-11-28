@@ -34,13 +34,14 @@
   			});
   			<?php } ?>
 			
+			
 			// Put vars into local storage for ajax shifts
-			$('.wineCheckin').live('click', function() {
+			/*$('.wineCheckin').live('click', function() {
 			  var wineId = $(this).jqmData('id');
 			  //alert(wineId)
 			  $('#checkinview').jqmData('wineId', wineId);
 			  $.mobile.changePage('#checkinview');
-			});
+			}); */
   			
 			/*$('#checkinview').live('pagebeforeshow',function(event, ui){
 			   $.mobile.pageLoading();    

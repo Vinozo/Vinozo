@@ -11,13 +11,15 @@
 		<div>
 		  <h1>Vinozo - Login</h1>
 		  
-		  <form action="/user/login"  data-ajax="false" method="get" id="loginform">
+		  <form action="/user/login"  data-ajax="false" method="post" id="loginform">
 		  	email:<input type="text" name="email"/><br />
 		  	password: <input type="password" name="password"/>
 		  	<input type="submit" value="login" data-role="button"/>
 		  </form>
 		  <fb:login-button autologoutlink='true'></fb:login-button>
-		  <?php //var_dump($this); ?>
+		  <?php 
+		 
+		 //var_dump($this->session->userdata); ?>
 		</div>
 	</div> 
 </div> 
@@ -39,6 +41,7 @@
 			
 		</div>
 		<p><a href="/user/logout" rel="external">logout</a></p>
+		 
 	</div>
 <!-- /search page -->
 

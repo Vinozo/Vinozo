@@ -11,7 +11,26 @@
             $("#checkindetails").html('there was an error');
         }        
  
-        $(document).ready(function() {
+         $(document).ready(function() {
+            $("#checkin").click(function(){
+ 				$.mobile.changePage('#checkinview');
+ 				
+                var formData = $("#checkinform").serialize();
+ 
+                $.ajax({
+                    type: "POST",
+                    url: "/wine/checkin/",
+                    cache: false,
+                    data: formData,
+                    success: onSuccess,
+                    error: onError
+                });
+                
+                return false;
+            });
+        });
+        
+        /* $(document).ready(function() {
             $('#checkinview').live( 'pageinit',function(event, ui){
  				//alert('checkinview loaded')
                 //var formData = $("#searchform").serialize();
@@ -28,5 +47,5 @@
  			//$('#content').html('<h2>Checking In: '+$(this).jqmData('name')+'</h2>')
                 return false;
             });
-        });
+        }); */
     </script>

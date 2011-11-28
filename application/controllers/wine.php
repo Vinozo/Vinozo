@@ -34,14 +34,38 @@ class Wine extends CI_Controller {
 	/**
 	 * 	Wine checkin
 	 */
-	public function checkin($id)
+	public function checkin()
 		{
+			// Get id, rating and note from form
+			// Really messy, yes.
+			if($this->input->post('id')){
+				$id = $this->input->post('id');
+				//$data = array('data' => $this->snooth->search($postVars));
+			} else {
+				$id = null;
+			}
+			if($this->input->post('note')){
+				$note = $this->input->post('note');
+				//$data = array('data' => $this->snooth->search($postVars));
+			} else {
+				$note = null;
+			}
+			if($this->input->post('rating')){
+				$rating = $this->input->post('rating');
+				//$data = array('data' => $this->snooth->search($postVars));
+			} else {
+				$rating = null;
+			}
 			//var_dump($this->vinozo);
 			$postData = json_encode(array(
-				'user_id'=>'100', // Will come from session
+				'user_id'=> $this->session->userdata('uid'), // Will come from session
 				'wineId'=>$id, // Try 'wine'
-				'favorite'=>0 // From session?
+				'favorite'=>0, // From session?
+				'note' => $note,
+				'rating' => $rating,
+				'ip' => $this->session->userdata('ip')
 			));	
+			//var_dump($postData);
 			$data = array('data' => $this->vinozo->createCheckin($postData));
 			$this->load->view('templates/checkin_details', $data);
 		}
