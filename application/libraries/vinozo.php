@@ -462,7 +462,7 @@
 		{
 			//$this->logout(); // You know, just in case
 			// TODO: Bypassing call and needs error handling
-			return $this->connection->post('http://radiant-dusk-5485.herokuapp.com/user/createuser/', $postData, FALSE);
+			return $this->connection->get('http://radiant-dusk-5485.herokuapp.com/user/login/v1/', $postData, FALSE);
 			
 		}
 		

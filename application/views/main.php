@@ -11,7 +11,7 @@
 		<div>
 		  <h1>Vinozo - Login</h1>
 		  
-		  <form action="/user/login"  data-ajax="false" method="post" id="loginform">
+		  <form action="/user/login"  data-ajax="false" method="get" id="loginform">
 		  	email:<input type="text" name="email"/><br />
 		  	password: <input type="password" name="password"/>
 		  	<input type="submit" value="login" data-role="button"/>
