@@ -20,22 +20,48 @@
 	<script src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
 	<link rel="stylesheet" href="/_assets/js/theme/vinozo_red.css">
 	<link rel="stylesheet" href="/_assets/css/vinozo.css">
+	
+	<link rel="apple-touch-icon" href="/_assets/images/icon.png"/>
+	<link rel="apple-touch-startup-image" href="/_assets/images/startup.png">
 			
 	<script type="text/javascript">	
 		
 			<?php 
+			// Check if logged in and slide over to search view (from loginview) if so
 			if($this->vinozo->logged_in()){ ?>
 			$('#loginview').live( 'pageinit',function(event){
   			$.mobile.changePage('#searchview')
   			});
   			<?php } ?>
-		
-		
+			
+			
+			// Put vars into local storage for ajax shifts
+			/*$('.wineCheckin').live('click', function() {
+			  var wineId = $(this).jqmData('id');
+			  //alert(wineId)
+			  $('#checkinview').jqmData('wineId', wineId);
+			  $.mobile.changePage('#checkinview');
+			}); */
+  			
+			/*$('#checkinview').live('pagebeforeshow',function(event, ui){
+			   $.mobile.pageLoading();    
+			   var dynamicDataResp = $.ajax({
+			    url: "/wine/checkin/"+$(this).jqmData('wineId'),
+			    async: false,
+			    cache: false
+			  });
+			  if(dynamicDataResp.status == 200){
+			    $('#dynamicContentHolder').text(dynamicDataResp.responseText);
+			  }
+			  else{
+			    $.mobile.changePage('#error', 'none', false, false);
+			  }
+			}); */ // 
+	
+
 		// all dialog buttons should close their parent dialog
 		$(".ui-dialog button").live("click", function() {
-		
 			$("[data-role='dialog']").dialog("close");
-		
 		});
 	
 	</script>
