@@ -3,19 +3,18 @@
 <!-- login page -->
 <div data-role="page" id="loginview"> 
 <?php  $this->load->view('utility/fb_js_sdk'); ?>
-	<div data-role="header" data-position="fixed"> 
-		<h1>VINOZO</h1>
+    <div id="introheader">
+			
+	</div> 
+	<div data-role="content" >
 		
-	</div><!-- /header --> 
-	<div data-role="content" > 
 		<div>
-		  <h1>Login</h1>
-		  
 		  <form action="/user/login"  data-ajax="false" method="post" id="loginform">
-		  	email:<input type="text" name="email"/><br />
-		  	password: <input type="password" name="password"/>
+		  	<input type="text" name="email" value="email"/><br />
+		  	<input type="password" name="password" value="" />
 		  	<input type="submit" value="login" data-role="button"/>
 		  </form>
+		  
 		  <fb:login-button autologoutlink='true'></fb:login-button>
 		  <?php 
 		 
@@ -24,18 +23,10 @@
 		 	
 		 ?>
 		 
-		 
-	     <h1>Signup</h1>
-		  
-		  <form action="/user/signup"  data-ajax="false" method="post" id="loginform">
-		  	email:<input type="text" name="email"/><br />
-		  	password: <input type="password" name="password"/>
-		  	<input type="submit" value="login" data-role="button"/>
-		  </form>
-	
+		
 		</div>
 	</div> 
-	<?php  $this->load->view('templates/footer'); ?> 
+
 </div> 
 <!-- /login page -->
 
