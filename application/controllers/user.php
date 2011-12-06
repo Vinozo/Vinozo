@@ -72,6 +72,43 @@
 			
 			
 		}
+/**
+	 * register
+	 *
+	 * @return void
+	 * @author Mathew
+	 **/
+	function register()
+	{
+	    $this->form_validation->set_rules('email', 'Email Address', 'required|callback_email_check|valid_email');
+	    $this->form_validation->set_rules('password', 'Password', 'required');
+	    $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
+	    
+	    if ($this->form_validation->run() == false)
+	    {
+	        $data['content'] = $this->load->view('login_view', null, true);
+	        //$this->load->view('template', $data);
+	    }
+	    else
+	    {
+	        $email    = $this->input->post('email');
+	        $password = $this->input->post('password');
+	        
+	        $register = $this->redux_auth->register($username, $password, $email);
+	        
+	        if ($register)
+	        {
+	            $this->session->set_flashdata('message', '<p class="success">You have now registered. Please login.</p>');
+	            redirect('welcome/register');
+	        }
+	        else
+	        {
+	            $this->session->set_flashdata('message', '<p class="error">Something went wrong, please try again or contact the helpdesk.</p>');
+	            redirect('welcome/register');
+	        }
+	    }
+	}
+	
 		
 		function logout()
 		{
