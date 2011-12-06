@@ -5,7 +5,8 @@ class Search extends CI_Controller {
 	function __construct()
 		{
 			parent::__construct();
-			$this->load->library('snooth');
+			$this->load->model('Search_model');
+			//$this->load->library('snooth');
 			//$this->search->enable_debug(TRUE);
 		}
 		
@@ -18,9 +19,12 @@ class Search extends CI_Controller {
 	public function wine()
 		{
 			if($postVars = $this->input->post('terms')){
-				$data = array('data' => $this->snooth->search($postVars));
+				$data = array('data' => $this->Search_model->search($postVars));
+				//$data = array('data' => $this->snooth->search($postVars));
+				
 			} else {
 				$data = array('data' => json_encode(array('error' => 'Please enter at least one word to search for')));
+				//var_dump($data);
 			}
 			$this->load->view('templates/search_results', $data);
 		}

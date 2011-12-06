@@ -8,7 +8,9 @@ class Wine extends CI_Controller {
 		{
 			parent::__construct();
 			
-			$this->load->library('snooth');
+			//$this->load->library('snooth');
+			$this->load->model('Search_model');
+			$this->load->model('Wine_model');
 			$this->load->library('session');
 			$this->load->library('vinozo');
 			//$this->search->enable_debug(TRUE);
@@ -25,7 +27,7 @@ class Wine extends CI_Controller {
 	public function details($id)
 		{
 			//http://api.snooth.com/wine/?id=kramer-vineyards-pinot-noir-estate&akey=rrwb6nqmqmiyhshx0rickn01sn3aoi89f78ym08rhuhbbsz7
-			$data = array('data' => $this->snooth->wineDetails($id), 'id' => $id);
+			$data = array('data' => $this->Search_model->wineDetails($id), 'id' => $id);
 			
 			//$data['data']['wineId'] = $id;
 			$this->load->view('checkin', $data);
@@ -37,7 +39,7 @@ class Wine extends CI_Controller {
 	public function checkin()
 		{
 			// Get id, rating and note from form
-			// Really messy, yes.
+			/* Really messy, yes.
 			if($this->input->post('id')){
 				$id = $this->input->post('id');
 				//$data = array('data' => $this->snooth->search($postVars));
@@ -55,7 +57,7 @@ class Wine extends CI_Controller {
 				//$data = array('data' => $this->snooth->search($postVars));
 			} else {
 				$rating = null;
-			}
+			}*/
 			//var_dump($this->vinozo);
 			$postData = json_encode(array(
 				'user_id'=> $this->session->userdata('uid'), // Will come from session
@@ -65,7 +67,7 @@ class Wine extends CI_Controller {
 				'rating' => $rating,
 				'ip' => $this->session->userdata('ip')
 			));	
-			//var_dump($postData);
+			//var_dump($postData); 
 			$data = array('data' => $this->vinozo->createCheckin($postData));
 			$this->load->view('templates/checkin_details', $data);
 		}
