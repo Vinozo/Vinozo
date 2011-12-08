@@ -27,6 +27,7 @@
 			$this->load->library('facebook');
 			$this->load->helper('url');
 			$this->load->helper('security');
+			$this->load->model('user_model');
 		}
 		
 		public function index()  {	
@@ -48,6 +49,7 @@
 				
 				// Call /user/login
 				$response = $this->vinozo->login($postData);
+				
 				//$response = json_decode($response->__resp->data, true);
 				//var_dump($response->__resp->data->id);
 				//return;

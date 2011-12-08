@@ -5,13 +5,13 @@ class User_model extends CI_Model {
 	
 	function __construct() {
 		parent::__construct();
-		session_start();
+		//session_start();
 	}
 	
 	
 	public function verify_user ($email, $password) {
 		
-		$q = $this->db->where('email_address',$email)->where('password', sha1($password))->limit(1)->get('users');
+		$q = $this->db->where('emailaddress',$email)->where('password', sha1($password))->limit(1)->get('user');
 		
 		if ($q->num_rows > 0 ) {
 			echo '<pre>';
@@ -29,7 +29,7 @@ class User_model extends CI_Model {
 			'password' => md5($this->input->post('password'))						
 		);
 		
-		$insert = $this->db->insert('users', $new_member_insert_data);
+		$insert = $this->db->insert('user', $new_member_insert_data);
 		return $insert;
 	
 	}

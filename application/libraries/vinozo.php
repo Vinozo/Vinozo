@@ -416,7 +416,6 @@
 		public function logged_in()
 		{
 			// Simply check for uid session variable
-			//var_dump($this->_obj->session->userdata);
 			if(array_key_exists('uid', $this->_obj->session->userdata)){
 				//echo "found key";
 				return true;
