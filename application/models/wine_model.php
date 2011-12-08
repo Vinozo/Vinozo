@@ -9,7 +9,7 @@ class Wine_model extends CI_Model {
     {
         // Call the Model constructor
         parent::__construct();
-		//$this->load->library('vinozo');
+		$this->load->library('vinozo');
     }
 	
 	function checkin()
@@ -44,8 +44,6 @@ class Wine_model extends CI_Model {
 				'ip' => $this->session->userdata('ip')
 			));	
 			//var_dump($postData);
-		return $this->vinozo->createCheckin($postData); 
+		return $this->vinozo->call('post', '/checkin/createcheckin', $postData, TRUE);
 	} 
-
-}
-?>   
+} 

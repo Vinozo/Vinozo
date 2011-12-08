@@ -10,7 +10,7 @@ class Wine extends CI_Controller {
 			
 			//$this->load->library('snooth');
 			$this->load->model('Search_model');
-			$this->load->model('Wine_model');
+			$this->load->model('wine_model');
 			$this->load->library('session');
 			$this->load->library('vinozo');
 			//$this->search->enable_debug(TRUE);
@@ -57,18 +57,18 @@ class Wine extends CI_Controller {
 				//$data = array('data' => $this->snooth->search($postVars));
 			} else {
 				$rating = null;
-			}*/
+			}
 			//var_dump($this->vinozo);
 			$postData = json_encode(array(
 				'user_id'=> $this->session->userdata('uid'), // Will come from session
-				'wineId'=>$id, // Try 'wine'
+				'wineId'=>$this->id, // Try 'wine'
 				'favorite'=>0, // From session?
 				'note' => $note,
 				'rating' => $rating,
 				'ip' => $this->session->userdata('ip')
-			));	
+			));	*/
 			//var_dump($postData); 
-			$data = array('data' => $this->vinozo->createCheckin($postData));
+			$data = array('data' => $this->wine_model->checkin());
 			$this->load->view('templates/checkin_details', $data);
 		}
 	
