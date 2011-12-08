@@ -1,9 +1,11 @@
-<?php  $this->load->view('templates/header'); ?>
+<?php  
+$this->load->helper('form');
+$this->load->view('templates/header'); ?>
 
 <!-- login page -->
 <div data-role="page" id="detailsview"> 
 <?php  $this->load->view('utility/checkin_ajax'); ?> 
-	<div data-role="header"> 
+	<div data-role="header" data-position="fixed"> 
 		<h1>Wine Detail</h1>
 		
 	</div><!-- /header --> 
@@ -40,7 +42,11 @@
 				
 		}	
 	?>
-	<form action="#"  method="post" id="checkinform">
+	<?php 
+		// Necessary for CSRF security
+		$attributes = array('method' => 'post', 'id' => 'checkinform');
+		echo form_open('#', $attributes); ?>
+		<!-- <form action="#"  method="post" id="checkinform"> -->
 			<input type="hidden" name="id" id="id" value="<?php echo $id ?>">
 			rating:<input type="text" name="rating" id="rating">
 			note:<input type="text" name="note" id="note">
@@ -52,7 +58,7 @@
 
 <!-- checkin page -->
 <div data-role="page" id="checkinview"> 
-	<div data-role="header"> 
+	<div data-role="header" data-position="fixed"> 
 		<h1>VINOZO: Checkin</h1>
 	</div><!-- /header --> 
 	<?php if(!$wine){
