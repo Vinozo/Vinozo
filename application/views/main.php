@@ -23,10 +23,16 @@
 		 	
 		 ?>
 		 
-		
+		 <h2>Signup</h2> 
+		  <form action="/user/signup"  data-ajax="false" method="post" id="loginform">
+		  	email:<input type="text" name="email"/><br />
+		  	password: <input type="password" name="password"/>
+		  	<input type="submit" value="signup" data-role="button"/>
+		  </form>
+	
 		</div>
 	</div> 
-
+ 
 </div> 
 <!-- /login page -->
 

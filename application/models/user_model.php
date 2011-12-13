@@ -5,11 +5,11 @@ class User_model extends CI_Model {
 	
 	function __construct() {
 		parent::__construct();
-		session_start();
+		//parent::Model();
 	}
+
 	
-	
-	public function verify_user ($email, $password) {
+	function verifyuser ($email, $password) {
 		
 		$q = $this->db->where('email_address',$email)->where('password', sha1($password))->limit(1)->get('users');
 		
@@ -24,12 +24,15 @@ class User_model extends CI_Model {
 	
 	public function register_user($email, $password) {
 		
+		$curupdate = date('Y-m-d H:I:s', strtotime("now"));
+		
 		$new_member_insert_data = array(
-			'email' => $this->input->post('email'),			
-			'password' => md5($this->input->post('password'))						
+			'emailaddress' => $this->input->post('email'),			
+			'password' => md5($this->input->post('password')),
+			'created_date' => $curupdate					
 		);
 		
-		$insert = $this->db->insert('users', $new_member_insert_data);
+		$insert = $this->db->insert('user', $new_member_insert_data);
 		return $insert;
 	
 	}
