@@ -8,7 +8,7 @@
 				<li><a href="#friends" id="tabD" data-icon="custom">Friends</a></li>
 			</ul>
 		</div><!-- /navbar -->
-
+</div>
 <!-- scripts concatenated and minified via ant build script-->
 <script src="/_assets/js/plugins.js"></script>
 <script src="/_assets/js/script.js"></script>
@@ -20,5 +20,3 @@
 	<script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
 <![endif]-->
 
-</body>
-</html>

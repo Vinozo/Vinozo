@@ -1,4 +1,6 @@
-<?php  $this->load->view('templates/header'); ?>
+<?php  
+$this->load->helper('form');
+$this->load->view('templates/header'); ?>
 
 <!-- login page -->
 <div data-role="page" id="loginview"> 
@@ -9,11 +11,15 @@
 	<div data-role="content" >
 		
 		<div>
-		  <form action="/user/login"  data-ajax="false" method="post" id="loginform">
-		  	<input type="text" name="email" value="email"/><br />
+		<?php 
+		// Necessary for CSRF security
+		$attributes = array('data-ajax' => 'false', 'method' => 'post', 'id' => 'loginform');
+		echo form_open('user/login', $attributes); ?>
+		 	<input type="text" name="email" value="email"/><br />
 		  	<input type="password" name="password" value="" />
+		  	
 		  	<input type="submit" value="login" data-role="button"/>
-		  </form>
+		 </form> 
 		  
 		  <fb:login-button autologoutlink='true'></fb:login-button>
 		  <?php 
@@ -44,7 +50,11 @@
 	</div><!-- /header --> 
 	
 	<div data-role="content" > 
-		<form action="#"  method="post" id="searchform">
+		<?php 
+		// Necessary for CSRF security
+		$attributes = array('method' => 'post', 'id' => 'searchform');
+		echo form_open('#', $attributes); ?>
+		<!-- <form action="#"  method="post" id="searchform"> -->
 			<input type="text" name="terms" id="searchterms">
 			<input type="submit" name="go" value="go" id="search"/>
 		</form>

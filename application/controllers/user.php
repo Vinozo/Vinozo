@@ -8,11 +8,10 @@
  class User extends CI_Controller {
 		
 		private $vinoUser = null;
-		
+	
 	function __construct()
 	{
-		parent::__construct();
-		
+		parent::__construct();		
 		//$this->load->library('user');
 		$this->load->library('session');
 		$this->load->library('vinozo');
@@ -50,7 +49,12 @@
 			
 			if ($dbres != false) {
 				$this->session->set_userdata('email', $this->input->get('email'));					
-			}
+
+				
+				// Got results, so set sess var and redirect
+				$this->session->set_userdata('uid', $response->__resp->data->id);
+				$this->session->set_userdata('ip', $this->input->ip_address());
+				
 			
 			echo "username:".$this->input->post('email')." -- ".$this->input->post('password');
 			
@@ -60,13 +64,15 @@
 			
 			// Redirect to home, which will flip to search when it sees the sess var
 			//redirect('/');
+			}
+			
+			
 		} else {
 			//redirect('/');
 		}
 		
 		
 	}
-
 
 	public function signup() {
 		$this->load->library('form_validation');
